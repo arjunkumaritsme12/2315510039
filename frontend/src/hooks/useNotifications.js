@@ -22,7 +22,10 @@ export function useNotifications({ page = 1, limit = 20, notification_type = '' 
       setNotifications(fetched);
       setHasMore(fetched.length === limit);
     } catch (err) {
-      setError(err.message || 'Failed to load notifications');
+      const message = err?.response?.status === 401 || err?.response?.status === 403
+        ? 'The notification service rejected the request. Showing demo notifications instead.'
+        : err.message || 'Failed to load notifications';
+      setError(message);
     } finally {
       setLoading(false);
     }

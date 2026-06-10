@@ -35,7 +35,7 @@ export default function AllNotifications() {
         </FormControl>
       </Stack>
 
-      {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
+      {error && <Alert severity="warning" sx={{ mb: 2 }}>{error}</Alert>}
       {loading && <LoadingSpinner />}
 
       {!loading && notifications.length === 0 && (
